@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>БРИТВА — барбершоп</title>
+    <style>
+        :root {
+            --bg: #1a1a1a;
+            --gold: #d4af37;
+            --text: #ffffff;
+            --gray: #333;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: Arial, sans-serif; line-height: 1.6; }
+        header { background: #000; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--gold); flex-wrap: wrap; gap: 1rem; }
+        .logo { font-size: 2rem; font-weight: bold; color: var(--gold); letter-spacing: 2px; }
+        nav a { color: var(--text); text-decoration: none; margin-left: 2rem; font-size: 1.1rem; transition: color 0.3s; }
+        nav a:hover { color: var(--gold); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        section { display: none; }
+        section.active { display: block; }
+        h1, h2 { color: var(--gold); margin-bottom: 1rem; }
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=80') no-repeat center/cover;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        .hero h1 { font-size: 3rem; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; }
+        .btn { display: inline-block; background: var(--gold); color: #000; padding: 0.8rem 2rem; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background 0.3s; }
+        .btn:hover { background: #b8962e; }
+        .features { display: flex; justify-content: space-around; margin: 3rem 0; flex-wrap: wrap; gap: 1rem; }
+        .feature { text-align: center; padding: 1rem; min-width: 220px; }
+        .feature h3 { color: var(--gold); }
+        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
+        .gallery img { width: 100%; height: 220px; object-fit: cover; border: 2px solid var(--gold); border-radius: 4px; transition: transform 0.3s; }
+        .gallery img:hover { transform: scale(1.03); }
+        .services-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .service-item { border: 1px solid var(--gold); padding: 1rem; display: flex; justify-content: space-between; border-radius: 4px; }
+        .service-item .price { color: var(--gold); font-weight: bold; }
+        .contact-info { display: flex; gap: 2rem; margin: 2rem 0; flex-wrap: wrap; }
+        .contact-info > div { flex: 1; min-width: 260px; }
+        form { display: flex; flex-direction: column; gap: 1rem; max-width: 400px; }
+        input, textarea { padding: 0.8rem; background: var(--gray); border: 1px solid var(--gold); color: var(--text); border-radius: 4px; font-family: inherit; }
+        button { background: var(--gold); color: #000; border: none; padding: 0.8rem; font-weight: bold; cursor: pointer; border-radius: 4px; }
+        footer { text-align: center; padding: 2rem; border-top: 1px solid var(--gold); margin-top: 2rem; color: #888; }
+        @media (max-width: 700px) {
+            .gallery, .services-list { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.2rem; }
+            nav a { margin-left: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">БРИТВА</div>
+        <nav>
+            <a href="#home" onclick="showPage('home')">Главная</a>
+            <a href="#services" onclick="showPage('services')">Услуги</a>
+            <a href="#contacts" onclick="showPage('contacts')">Контакты</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="home" class="active">
+            <div class="hero">
+                <h1>Мужской барбершоп БРИТВА</h1>
+                <p>Стиль, качество, индивидуальный подход</p>
+                <a href="#services" class="btn" onclick="showPage('services')">Записаться</a>
+            </div>
+            <div class="features">
+                <div class="feature"><h3>Опытные мастера</h3><p>Стаж от 5 лет</p></div>
+                <div class="feature"><h3>Премиум инструменты</h3><p>Только лучшее</p></div>
+                <div class="feature"><h3>Уютная атмосфера</h3><p>Виски и кофе</p></div>
+            </div>
+            <h2>Галерея работ</h2>
+            <div class="gallery">
+                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80" alt="Мужская стрижка">
+                <img src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=800&q=80" alt="Стрижка бороды">
+                <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=800&q=80" alt="Бритьё опасной бритвой">
+            </div>
+        </section>
+
+        <section id="services">
+            <h1>Услуги и цены</h1>
+            <div class="services-list">
+                <div class="service-item"><span>Мужская стрижка</span><span class="price">1500 ₽</span></div>
+                <div class="service-item"><span>Стрижка бороды</span><span class="price">1000 ₽</span></div>
+                <div class="service-item"><span>Бритьё опасной бритвой</span><span class="price">1200 ₽</span></div>
+                <div class="service-item"><span>Королевское бритьё</span><span class="price">2000 ₽</span></div>
+                <div class="service-item"><span>Камуфляж седины</span><span class="price">800 ₽</span></div>
+                <div class="service-item"><span>Детская стрижка</span><span class="price">900 ₽</span></div>
+            </div>
+        </section>
+
+        <section id="contacts">
+            <h1>Контакты</h1>
+            <div class="contact-info">
+                <div>
+                    <h3>Адрес</h3>
+                    <p>г. Москва, ул. Тверская, д. 15</p>
+                    <h3>Телефон</h3>
+                    <p>+7 (999) 123-45-67</p>
+                    <h3>Часы работы</h3>
+                    <p>Ежедневно с 10:00 до 22:00</p>
+                </div>
+                <div>
+                    <h3>Запись онлайн</h3>
+                    <form onsubmit="alert('Спасибо! Мы свяжемся с вами.'); return false;">
+                        <input type="text" placeholder="Ваше имя" required>
+                        <input type="tel" placeholder="Телефон" required>
+                        <textarea placeholder="Комментарий" rows="3"></textarea>
+                        <button type="submit">Записаться</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>© 2025 Барбершоп БРИТВА. Все права защищены.</footer>
+
+    <script>
+        function showPage(id) {
+            document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.substring(1);
+            if (hash && ['home','services','contacts'].includes(hash)) {
+                showPage(hash);
+            }
+        });
+    </script>
+</body>
+</html>
